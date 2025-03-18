@@ -8,7 +8,7 @@ import { LuMessageSquareDot } from "react-icons/lu";
 import { RxAvatar } from "react-icons/rx";
 import Link from "next/link";
 
-let items = [
+const items = [
   {
     icon: IoHomeOutline,
     title: "Home",

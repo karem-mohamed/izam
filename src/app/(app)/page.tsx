@@ -1,7 +1,6 @@
 "use client";
 import JobItem from "@/components/jobItem";
 import Pagination from "@/components/pagination";
-import SwitchBtn from "@/components/switchBtn";
 import { useFetchJobs } from "@/endpoints/home/getJobs";
 import { Job } from "@/endpoints/home/types";
 import { useEffect, useState } from "react";
@@ -9,17 +8,16 @@ import Image from "next/image";
 import useSideBarContext from "@/context/sideBarContext/useSideBarContext";
 
 export default function Home() {
-  const [activeJob, setActiveJob] = useState();
+  const [activeJob, setActiveJob] = useState<number>();
   const { openSideBar, isOpen } = useSideBarContext();
   const limit = 6;
   const { data, mutateAsync } = useFetchJobs();
-  useFetchJobs;
   const getJobs = async () => {
     await mutateAsync({ limit, page: 1 });
   };
   useEffect(() => {
     getJobs();
-  }, []);
+  }, [getJobs]);
 
   const handlePagination = async (page: number) => {
     await mutateAsync({ limit, page });

@@ -5,7 +5,7 @@ interface JobsResponse {
   jobs: Job[];
   count: number;
 }
-let jobs = [
+const jobs = [
   {
     job_title: "Gaming UI designer",
     company: "Rockstar Games ",

@@ -10,7 +10,7 @@ import { IoChevronForward } from "react-icons/io5";
 import Link from "next/link";
 import Image from "next/image";
 
-let items = [
+const items = [
   {
     icon: IoHomeOutline,
     title: "Home",
@@ -83,6 +83,7 @@ export default function MobileSidebar({
                 <ul className="space-y-2">
                   {items.map((item) => (
                     <SidebarItem
+                      key={item.path}
                       icon={<item.icon size={20} />}
                       text={item.title}
                       path={item.path}
@@ -96,7 +97,10 @@ export default function MobileSidebar({
           <nav className="">
             <ul className="space-y-2">
               {["Setting and privacy", "Language", "Help"].map((item) => (
-                <span className="flex items-center gap-3 p-3 hover:bg-gray-100 rounded-md transition-all">
+                <span
+                  key={item}
+                  className="flex items-center gap-3 p-3 hover:bg-gray-100 rounded-md transition-all"
+                >
                   {item}
                 </span>
               ))}

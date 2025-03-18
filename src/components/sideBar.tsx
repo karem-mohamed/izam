@@ -18,7 +18,6 @@ import useToast from "@/context/toastContext/useToast";
 import { useOrderSideBarItems } from "@/endpoints/sideBar/orderSideBarItems";
 
 export default function Sidebar() {
-  const [isLongPress, setIsLongPress] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const { isOpen, openSideBar } = useSideBarContext();
   const { showToast } = useToast();
@@ -59,7 +58,7 @@ export default function Sidebar() {
     status: boolean,
     parent_id?: number
   ) => {
-    let newItems = [...items];
+    const newItems = [...items];
     if (parent_id) {
       const parent = newItems.find((item) => item.id === parent_id);
       const item = parent?.children?.find((item) => item.id == id);
@@ -166,7 +165,6 @@ export default function Sidebar() {
                 text={item.title}
                 visible={item.visible === false ? false : true}
                 handleVisability={handleVisability}
-                path={item.target}
                 isSettingOpen={isSettingOpen}
                 nested={item.children}
                 isMain={true}
@@ -189,7 +187,6 @@ export default function Sidebar() {
 function SidebarItem({
   id,
   text,
-  path,
   isSettingOpen,
   nested,
   isMain,
@@ -203,7 +200,6 @@ function SidebarItem({
 }: {
   id: number;
   text: string;
-  path: string;
   isSettingOpen: boolean;
   moveItem: (from: number, to: number) => void;
   handleVisability: (id: number, status: boolean, parent_id?: number) => void;
@@ -322,7 +318,6 @@ function SidebarItem({
               text={item.title}
               visible={item.visible == false ? false : true}
               handleVisability={handleVisability}
-              path={item.target}
               isSettingOpen={isSettingOpen}
               moveItem={moveItem}
               moveSubItem={moveSubItem}

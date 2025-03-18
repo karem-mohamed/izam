@@ -21,7 +21,7 @@ export default function JobItem({
   logo: string;
   index: number;
   activeJob: number | undefined;
-  setActiveJob: (prev: any) => void;
+  setActiveJob: (prev: number) => void;
 }) {
   return (
     <div
