@@ -118,12 +118,13 @@ export default function Sidebar() {
   const startPress = () => {
     timerRef.current = setTimeout(() => {
       setIsSettingOpen(true);
-    }, 700);
+    }, 500);
   };
 
   const stopPress = () => {
-    if (timerRef.current) {
+    if (timerRef.current !== null) {
       clearTimeout(timerRef.current);
+      timerRef.current = null;
     }
   };
 
