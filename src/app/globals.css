@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f4f2ee;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  position: relative;
+  font-family: var(--font-dmsans);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background: #f8f9ff;
+}
+::-webkit-scrollbar-track {
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-green-500;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  @apply bg-green-500;
+}
