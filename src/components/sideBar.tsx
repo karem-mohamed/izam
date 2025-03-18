@@ -226,14 +226,23 @@ function SidebarItem({
     handleVisability(id, status, parentId);
   };
 
-  const [, drag] = useDrag({
+  const [{ isDragging }, drag] = useDrag({
     type: isMain ? "ITEM" : "SUB_ITEM",
     item: { id },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
   });
 
   useEffect(() => {
     setMakeVisible(visible);
   }, [visible]);
+
+  useEffect(() => {
+    if (isDragging) {
+      stopPress();
+    }
+  }, [isDragging]);
 
   const [, drop] = useDrop({
     accept: isMain ? "ITEM" : "SUB_ITEM",
@@ -287,7 +296,7 @@ function SidebarItem({
         <Link
           href={"notifications"}
           onClick={(e) => e.stopPropagation()}
-          className={`flex items-center gap-3 p-3 hover:bg-gray-200 rounded-md transition-all ${makeVisible ? "" : "text-gray-400"}`}
+          className={`flex items-center gap-3 p-3 rounded-md transition-all ${makeVisible ? "" : "text-gray-400"}`}
         >
           {isSettingOpen && <MdDragIndicator size={20} />}
           <span className="whitespace-nowrap">{text}</span>
