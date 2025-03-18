@@ -14,6 +14,7 @@ export default function Pagination({
 
   const goToPage = (page: number) => {
     if (page >= 1 && page <= totalPages) {
+      console.log("sssssssssssssss");
       setCurrentPage(page);
       setPage(page);
     }
